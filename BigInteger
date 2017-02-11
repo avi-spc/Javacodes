@@ -1,0 +1,22 @@
+package testcase;
+import java.util.Scanner;
+import java.math.BigInteger;
+
+public class Testcase {
+  
+  public static void main(String[] args) {
+     
+    Scanner sc=new Scanner(System.in);
+        BigInteger a=BigInteger.valueOf(200);
+        BigInteger b=BigInteger.valueOf(200);
+        BigInteger sum=BigInteger.valueOf(202);
+       
+        sum=a=sc.nextBigInteger();
+        b=sc.nextBigInteger();
+
+        a=a.add(b);
+        System.out.print(a+"\n");
+        sum=sum.multiply(b);
+        System.out.print(sum);
+        }
+   }
