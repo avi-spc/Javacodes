@@ -1,0 +1,40 @@
+package arraylistarray;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Arraylistarray {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int ask = scan.nextInt();
+        ArrayList<int[]> list = new ArrayList<>();
+        for(int i=0;i<ask;i++){
+            int n = scan.nextInt();
+            int dummy[] = new int[n];
+            for(int j=0;j<n;j++){
+                dummy[j]=scan.nextInt();
+            }
+            list.add(dummy);
+        }
+        
+        
+            int queries = scan.nextInt();;
+            for(int i=0;i<queries;i++){
+                int q = scan.nextInt();
+                int ch = scan.nextInt();
+                try{
+                    int[] var = list.get(q-1);
+                    System.out.println(var[ch-1]);
+                }
+                catch(Exception e){
+            System.out.println("ERROR!");
+        }
+        
+        }
+            
+        
+        
+        
+    }
+    
+}
