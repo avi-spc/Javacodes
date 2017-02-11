@@ -1,0 +1,29 @@
+package bubbsort;
+
+public class Bubbsort {
+
+    public static void main(String[] args) {
+        int a[]={23,45,3,6,89,22344,4555,32};
+        int pass,hold;
+        for(pass=1;pass<=a.length-1;pass++){
+            for(int i=0;i<a.length-1;i++){
+                if(a[i]>a[i+1]){
+                    hold=a[i];
+                    a[i]=a[i+1];
+                    a[i+1]=hold;
+                }
+                else{
+                    a[i]=a[i];
+                    a[i+1]=a[i+1];
+                }
+            }
+        }
+        for(int j=0;j<a.length;j++){
+            System.out.print(a[j]+" ");
+        }
+        
+    }
+        
+        
+    }
+    
