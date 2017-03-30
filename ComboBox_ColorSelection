@@ -1,0 +1,50 @@
+package combo;
+import javax.swing.JFrame;
+
+public class Combo {
+
+    public static void main(String[] args) {
+        stddd commm = new stddd();
+        commm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        commm.setSize(400,400);
+        commm.setVisible(true);
+       
+    }
+    
+}
+
+package combo;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.event.*;
+
+public class stddd extends JFrame {
+    
+    private JComboBox cb;
+    private JLabel picture;
+    
+    private  String[] colorname={"green.png","red.png"};
+    private Icon[] colors={new ImageIcon(getClass().getResource(colorname[0])), new ImageIcon(getClass().getResource(colorname[1]))};
+    
+    public stddd(){
+        super("colorrs");
+        setLayout(new FlowLayout());
+        
+        cb = new JComboBox(colorname);
+        
+        cb.addItemListener(
+                new ItemListener(){
+                    public void itemStateChanged(ItemEvent event){
+                        if(event.getStateChange()==ItemEvent.SELECTED)
+                            picture.setIcon(colors[cb.getSelectedIndex()]);
+                    }
+                }
+                
+        );
+        
+        add(cb);
+        picture=new JLabel(colors[0]);
+        add(picture);
+    }
+}
