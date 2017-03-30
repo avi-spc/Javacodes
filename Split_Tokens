@@ -1,0 +1,19 @@
+package tokens;
+
+import java.util.Scanner;
+
+public class Tokens {
+
+    public static void main(String[] args) {
+    Scanner scan = new Scanner(System.in);String str = scan.nextLine();
+
+    String delim = "[ !,?._'@]+";
+
+    String[] tokens = str.split(delim);
+    System.out.println(tokens.length);
+    for(int i=0;i<tokens.length;i++){
+        System.out.println(tokens[i]);
+    }
+    }
+    
+}
