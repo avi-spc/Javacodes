@@ -1,0 +1,52 @@
+package animation;
+import javax.swing.JFrame;
+
+public class Animation {
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame();
+        movng move = new movng();
+        frame.add(move);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(600,600);
+        frame.setVisible(true);
+    }
+    
+}
+
+package animation;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.geom.Ellipse2D;
+import javax.swing.*;
+import java.util.Random;
+
+public class movng extends JPanel implements ActionListener{
+    
+    Timer tim = new Timer(5,this);
+    int x=0,velx=2;
+    Random rand = new Random();
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        Graphics2D ball = (Graphics2D) g;
+        
+        int c1=rand.nextInt(256);
+        int c2=rand.nextInt(256);
+        int c3=rand.nextInt(256);
+        ball.setColor(new Color(c1,c2,c3));
+        //Ellipse2D ell = new Ellipse2D();
+        ball.fillOval(x,12,50,30);
+        
+        tim.start();
+    }
+    
+    public void actionPerformed(ActionEvent event){
+       if(x<0 || x>530)
+           velx=-velx;
+        
+        x=x+velx;
+        repaint();
+    }
+    
+}
