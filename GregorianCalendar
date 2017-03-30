@@ -1,0 +1,29 @@
+package text;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Scanner;
+
+public class Text {
+
+    public static void main(String[] args) {
+       Scanner scan = new Scanner(System.in); 
+       
+       int month = scan.nextInt()-1;
+       int day = scan.nextInt();
+       int year = scan.nextInt();
+       //String da = null;
+       GregorianCalendar cal = new GregorianCalendar(year,month,day);
+       switch(cal.get(Calendar.DAY_OF_WEEK)){
+            case 1: System.out.print("SUNDAY"); break;
+        case 2: System.out.print("MONDAY"); break;
+        case 3: System.out.print("TUESDAY"); break;
+        case 4: System.out.print("WEDNESDAY"); break;
+        case 5: System.out.print("THURSDAY"); break;
+        case 6: System.out.print("FRIDAY"); break;
+        case 7: System.out.print("SATURDAY"); break;
+           }
+       //System.out.print(da);
+       
+    }
+    
+}
