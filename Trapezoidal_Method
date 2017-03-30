@@ -1,0 +1,112 @@
+package trapedoid;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class Trapedoid {
+
+public static void main(String[] args) {
+        
+        Scanner scan = new Scanner(System.in); //scanner object defined
+        
+        System.out.print("Enter the number of terms: ");
+        int ask = scan.nextInt();
+        float coeff = 0;
+        int npow = 0;
+        String cha = null,var = null,expo = null,plus = null,a; //variables defined
+        String[] data = {};
+        LinkedList<String> list1 = new LinkedList<String>(Arrays.asList(data));//linked list defined to store function terms
+        float[] co = new float[ask];
+        float[] c = new float[ask];
+        int[] po = new int[ask];
+        int[] p = new int[ask];
+        int k=0;
+        
+        System.out.print("\nEnter the function in format(Coefficient * Variable ^ Power): ");
+        do{
+            coeff = scan.nextInt();
+            cha = scan.next(); // *
+            var = scan.next();
+            expo = scan.next(); // ^
+           npow = scan.nextInt(); 
+            
+            c[k] = coeff;
+            p[k] = npow;
+           
+            for(int i=1;i<=1;i++){
+                 coeff=coeff/(++npow);// calculating 3 degree differetiation
+            }
+
+            co[k]=coeff;
+            po[k]=npow;
+
+            plus = scan.next(); // if more than one terms are entered 
+            a = new String(coeff+"*"+var+"^"+npow+plus); //storing terms in form of results in string 
+
+            list1.add(a); 
+            k++;
+        }while(plus.equals("+") || plus.equals("-"));
+        
+        System.out.print("\nIntegrated function is as follows: ");
+        for(int j=0;j<list1.size();j++){
+            System.out.print(list1.get(j)); // printing function terms on console
+        }
+       
+       System.out.println("\n\nEnter the lower limit: "); 
+       float lowerLimit = scan.nextFloat();
+       System.out.println("Enter the upper limit: ");
+       float upperLimit = scan.nextFloat();
+       float f_lower = 0;
+       float f_upper = 0;
+       int loop = 1;
+       while(loop<2){
+       if(loop==1){
+       
+               for(int fdx=0;fdx<ask;fdx++){
+                    f_lower=(float)(f_lower+co[fdx]*(Math.pow(lowerLimit,po[fdx])));
+                    
+            }
+               loop++;
+       }
+       if(loop==2){
+          
+               for(int fdx=0;fdx<ask;fdx++){
+                    f_upper=(float)(f_upper+co[fdx]*(Math.pow(upperLimit,po[fdx])));
+            }
+       }
+       }
+       
+       float diff = f_upper - f_lower;
+       System.out.println("\nArea from integration rule: "+diff);       
+       
+       float fx = 0;
+       float sum = 0;
+       float area = 0;
+
+       System.out.print("\nEnter the number of partitions: ");
+       int divisions = scan.nextInt();
+       float h = (upperLimit-lowerLimit)/divisions;
+       for(int start=1;start<=divisions-1;start++){
+           for(int f=0;f<ask;f++){
+                
+                fx=(float) (c[f]*(Math.pow((lowerLimit+(start*h)),p[f])));
+                sum = sum + (2*fx);
+           }
+       }
+       
+       float first = 0;
+       float last = 0;
+       for(int f=0;f<ask;f++){
+           first=(float) (first+c[f]*(Math.pow(lowerLimit,p[f])));
+       }
+       
+       for(int f=0;f<ask;f++){
+           last=(float) (last+c[f]*(Math.pow(upperLimit,p[f])));
+       }
+       
+       area = (float) ((first + sum + last)*(h/2.0));
+       
+       System.out.println("\nArea from Trapezoidal rule: "+area);       
+    }
+    
+}
