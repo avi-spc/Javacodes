@@ -1,0 +1,21 @@
+package testing;
+
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+public class Testing {
+
+    public static void main(String[] args) {
+       Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String IP = in.next();
+            System.out.println(IP.matches(new MyRegex().pattern));
+        }
+    }
+ }
+
+class MyRegex{
+
+    public static String part="([0-2]?[0-5]?[0-5]?)";
+    public static String pattern =part+"\\."+part+"\\."+part+"\\."+part;
+}
