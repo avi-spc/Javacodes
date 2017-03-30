@@ -1,0 +1,56 @@
+package pkgnew;
+import java.util.Scanner;
+import java.lang.Math;
+
+public class New {
+
+    public static void main(String[] args) {
+        Scanner dig1=new Scanner(System.in);
+        
+        System.out.print("Enter the first number of range:");
+        int d1=dig1.nextInt();
+        System.out.print("\nEnter the second nuber of range");
+        int d3=dig1.nextInt();
+        System.out.print("\n Enter the number to be divided by:");
+        int div=dig1.nextInt();
+        //int d2=dig1.nextInt();
+        int cou = 0;
+        double n1;
+        int sum1=0,d2=d1;
+        int d4=d1;
+        int counter=0;
+
+
+        
+        while(d2>0){
+            d2=d2/10;
+            cou++;
+        }
+        //System.out.println(cou);
+        for(int k=d4,j=d4;j<=d3;j++,k++){
+            for(int i=cou;i>=1;i--){
+                n1=k%10;
+                k=k/10;
+                sum1+=(n1*(Math.pow(10,(i-1))));
+            }
+            System.out.println("The reversed number is:"+sum1);
+
+            int di=sum1-j;
+            float diff=0;
+            if (di>=0)
+            diff=di;
+            else if(di<0)
+                diff=(-di);
+            System.out.println("The absolute difference of the number is: "+diff);
+            
+            float division=diff/div;
+            double ab=Math.floor(division);
+            double bc=Math.ceil(division);
+            if(division==ab||division==bc){
+                    counter++;
+            }
+        }
+        System.out.println("The numbers are:"+counter); // TODO code application logic here
+    }
+    
+}
