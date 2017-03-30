@@ -1,0 +1,90 @@
+package animation2;
+import javax.swing.JFrame;
+
+public class Animation2 {
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame();
+        games ga = new games();
+        frame.add(ga);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(1000 ,1000);
+        frame.setVisible(true);
+    }
+    
+}
+
+package animation2;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.Random;
+
+public class games extends JPanel implements ActionListener{
+    Timer tm = new Timer(8,this);
+    int x=0,velX=2,y=0,velY=2,x2=910,y2=0,velY2=2,x3=910,y3=690,velY3=-2,velX3=-2;
+    Random rand = new Random();
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        Graphics2D gra = (Graphics2D) g;
+        gra.fillRect(x, y, 7, 7);
+        gra.fillRect(x2, y2, 7, 7);
+        gra.fillRect(x3, y3, 7, 7);
+        tm.start();
+    }
+    
+    public void actionPerformed(ActionEvent e){
+        if(x3==910 && y3>400){
+            y3=y3+velY3;
+        }
+        if(y3<=400)
+            {y3=400;
+             x3=x3+velX3;
+             
+             }
+        
+        if(x3<=400){
+                 x3=400;
+                 y3=y3-velY3;
+        }
+        
+        
+        
+        y2=y2+velY2;
+        if(y2<0 || y2>375)
+            velY2=-velY2;
+        if(x>910)
+            velX=-velX;
+        
+        hello();
+        
+        if(x<0 || y<0)
+        {velX=-velX;
+            velY=-velY;
+        }
+         x=x+velX;
+        
+        repaint();
+    }
+    
+    public void hello(){
+        if(x>40)
+            y=y+velY;
+        if(x>100)
+            y=y-velY;
+        if(x>200)
+            y=y+velY;
+        if(x>300)
+            y=y-velY;
+        if(x>400)
+            y=y+velY;
+        if(x>550)
+            y=y-velY;
+        if(x>700)
+            y=y+velY;
+        if(x>800)
+            velY=-velY;
+        
+    }
+}
+
